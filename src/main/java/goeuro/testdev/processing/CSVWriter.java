@@ -49,7 +49,7 @@ public class CSVWriter {
             log.info("Writing the CSV file");
             Files.write(Paths.get(writeTo), builder.toString().getBytes());
             log.debug("CSV file written");
-        } catch (IOException ex) {
+        } catch (IOException | UnsupportedOperationException | SecurityException ex) {
             throw new ApplicationException(ErrorCode.FILE_SYSTEM_ERROR, "Problem writing the csv file: " + ex.getMessage());
         }
     }
@@ -59,8 +59,8 @@ public class CSVWriter {
         builder.append("\n");
         if (cities != null) {
             for (City city : cities) {
-                log.debug("City found ({})", city.toString());
-                builder.append(city.toString());
+                log.debug("City found ({})", city.toCSV());
+                builder.append(city.toCSV());
                 builder.append("\n");
             }
         }

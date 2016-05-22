@@ -24,11 +24,10 @@ public class City {
     @JsonProperty(value = "geo_position")
     private GeoPosition geoPosition;
 
-    @Override
-    public String toString() {
+    public String toCSV() {
         return id + ","
                 + name + ","
                 + type + ","
-                + (geoPosition != null ? geoPosition.toString() : "0,0");
+                + (geoPosition != null ? geoPosition.toCSV() : "0,0");
     }
 }

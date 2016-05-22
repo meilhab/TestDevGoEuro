@@ -20,8 +20,7 @@ public class GeoPosition {
     @JsonProperty(value = "longitude", defaultValue = "0")
     private Float lng;
 
-    @Override
-    public String toString() {
+    public String toCSV() {
         return lat + "," + lng;
     }
 }
